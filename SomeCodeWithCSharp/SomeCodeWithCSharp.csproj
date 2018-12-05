@@ -43,13 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyExtensions.cs" />
-    <Compile Include="BaseClass\Father.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Scripts\Functions\Linq.cs" />
+    <Compile Include="Scripts\Utility\MyExtensions.cs" />
+    <Compile Include="Scripts\BaseClass\Father.cs" />
+    <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
