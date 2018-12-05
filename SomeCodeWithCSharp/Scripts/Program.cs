@@ -13,8 +13,9 @@ namespace SomeCodeWithCSharp
         static void Main(string[] args)
         {
 
-            MLinq.TestLinq();
-            
+            //MLinq.TestLinq();
+            MLinq.TestLinqSuper_Join();
+
         }
 
         
