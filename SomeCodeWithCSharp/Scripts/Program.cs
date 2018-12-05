@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BaseClass;
 using MyExtensions;
-using System.Linq;
 
 namespace SomeCodeWithCSharp
 {
