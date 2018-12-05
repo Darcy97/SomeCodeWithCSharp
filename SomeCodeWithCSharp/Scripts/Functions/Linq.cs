@@ -55,12 +55,12 @@ public static class MLinq
         //             Console.WriteLine("Skill: " + item.skill.Name);
         //         }
 
-
+        //没有任何意义 仅测试用法
         var anoRes = from m in masterList
                      join s in skillList on m.Type equals s.Type
                      where m.ID > 2
                      orderby s.Demage
-                     select new { master = m, skill = s };
+                     select new { master = m, skill = s }; //匿名类型  如下foreach 配合 var 使用 
 
         Console.WriteLine("++++++++++++" + anoRes.Count());
         foreach (var item in anoRes)
