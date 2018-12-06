@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scripts\Functions\Linq.cs" />
+    <Compile Include="Scripts\Pair\Human.cs" />
+    <Compile Include="Scripts\Pair\Pair.cs" />
     <Compile Include="Scripts\Utility\MyExtensions.cs" />
     <Compile Include="Scripts\BaseClass\Father.cs" />
     <Compile Include="Scripts\Program.cs" />
