@@ -8,7 +8,11 @@ namespace SomeCodeWithCSharp.Scripts.Pair
     {
 
         public static Pair Instance = new Pair();
-        private double malePecent;
+
+        private readonly double malePecent = 0.5;
+
+        private readonly int charactorSimilarityDegree = 2;
+        private readonly int heightSimilarityDegree = 2;
 
         private Random random;
 
@@ -16,7 +20,6 @@ namespace SomeCodeWithCSharp.Scripts.Pair
 
         public void Start()
         {
-            malePecent = 0.5;
             random = new Random((int)DateTime.Now.Ticks);
 
             humans = new List<Human>();
@@ -50,7 +53,10 @@ namespace SomeCodeWithCSharp.Scripts.Pair
                 Charactor charactor = (Charactor)random.Next(5);
                 int faceScore = random.Next(101);
 
+                Height height = (Height)random.Next(4);
+
                 Human newHuman = new Human(id, name, age, gender, charactor, faceScore);
+                newHuman.ChangeHeight(height);
                 humans.Add(newHuman);
             }
         }
@@ -59,16 +65,15 @@ namespace SomeCodeWithCSharp.Scripts.Pair
         {
             var pairs = from m in males
                         join f in females on m.Age equals f.Age
-                        where Math.Abs(m.MCharactor - f.MCharactor) < 2
+                        where Math.Abs(m.MCharactor - f.MCharactor) < 2 && Math.Abs(m.MHeight - f.MHeight) < 2
                         orderby m.Age
                         select new { male = m, female = f }; //匿名类型  如下foreach 配合 var 使用 
-
+            Console.WriteLine(pairs.Count());
             foreach (var item in pairs)
             {
-                Console.WriteLine(item.male.MCharactor.ToString() + item.female.MCharactor.ToString());
-            }
-
-            
+                Console.WriteLine("Charactor" + item.male.MCharactor.ToString() + item.female.MCharactor.ToString());
+                Console.WriteLine("Height:" + item.male.MHeight.ToString() + item.female.MHeight.ToString());
+            }   
         }
 
 
