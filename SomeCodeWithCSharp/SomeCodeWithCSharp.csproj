@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scripts\Async_Await\AsyncAwaitTest.cs" />
+    <Compile Include="Scripts\Event\EventTest.cs" />
     <Compile Include="Scripts\Functions\Linq.cs" />
     <Compile Include="Scripts\Pair\Human.cs" />
     <Compile Include="Scripts\Pair\Pair.cs" />

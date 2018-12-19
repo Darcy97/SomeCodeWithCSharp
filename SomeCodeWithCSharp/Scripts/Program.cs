@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BaseClass;
 using MyExtensions;
 using SomeCodeWithCSharp.Scripts.Pair;
+using SomeCodeWithCSharp.Scripts.Event;
 
 namespace SomeCodeWithCSharp
 {
@@ -16,8 +17,9 @@ namespace SomeCodeWithCSharp
 
             //MLinq.TestLinq();
             //MLinq.TestLinqSuper_Join();
-            Pair.Instance.Start();
-
+            //Pair.Instance.Start();
+            EventTest.Instance.Test();
+            Console.ReadLine();
         }
 
         

@@ -2,12 +2,18 @@
 using System.Linq;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// Linq Test
+/// 1. 根据男女比例随机生成一定数量的人
+/// 2. 将人根据性别分组 
+/// 3. 将男女根据某些特征（如性格、身高）进行配对 （每个人可重用） 
+/// </summary>
 namespace SomeCodeWithCSharp.Scripts.Pair
 {
     public class Pair
     {
-
-        public static Pair Instance = new Pair();
+        public static Pair Instance = new Pair(); //单例
 
         private readonly double malePecent = 0.5;
 
@@ -15,7 +21,6 @@ namespace SomeCodeWithCSharp.Scripts.Pair
         private readonly int heightSimilarityDegree = 2;
 
         private Random random;
-
         private List<Human> humans;
 
         public void Start()
@@ -35,7 +40,6 @@ namespace SomeCodeWithCSharp.Scripts.Pair
             PairHumans(HumanGroups[0].ToList(), HumanGroups[1].ToList());
             Console.Read();
         }
-
 
         private void GenerateHumans(int num)
         {
@@ -65,7 +69,9 @@ namespace SomeCodeWithCSharp.Scripts.Pair
         {
             var pairs = from m in males
                         join f in females on m.Age equals f.Age
-                        where Math.Abs(m.MCharactor - f.MCharactor) < 2 && Math.Abs(m.MHeight - f.MHeight) < 2
+                        where 
+                        Math.Abs(m.MCharactor - f.MCharactor) < charactorSimilarityDegree && 
+                        Math.Abs(m.MHeight - f.MHeight) < heightSimilarityDegree
                         orderby m.Age
                         select new { male = m, female = f }; //匿名类型  如下foreach 配合 var 使用 
             Console.WriteLine(pairs.Count());
@@ -73,9 +79,9 @@ namespace SomeCodeWithCSharp.Scripts.Pair
             {
                 Console.WriteLine("Charactor" + item.male.MCharactor.ToString() + item.female.MCharactor.ToString());
                 Console.WriteLine("Height:" + item.male.MHeight.ToString() + item.female.MHeight.ToString());
+                Console.WriteLine("Name: " + item.male.Name + item.female.Name);
             }   
         }
-
 
         private List<IGrouping<Gender, Human>> GroupHumans(List<Human> humans)
         {
@@ -85,7 +91,6 @@ namespace SomeCodeWithCSharp.Scripts.Pair
                 into humanGroup
                 orderby humanGroup.Key
                 select humanGroup;
-
 
             humanGroups.Count();
 
